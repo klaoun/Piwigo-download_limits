@@ -6,7 +6,6 @@ Description: Limited number of downloads per day
 Plugin URI: http://piwigo.org/ext/extension_view.php?eid=
 Author: plg
 Author URI: https://piwigo.com
-Has Settings: true
 */
 
 if (!defined('PHPWG_ROOT_PATH'))
@@ -37,24 +36,6 @@ function dlimits_init()
 
   load_language('plugin.lang', dirname(__FILE__).'/');
   load_language('lang', PHPWG_ROOT_PATH.PWG_LOCAL_DIR, array('no_fallback'=>true, 'local'=>true) );
-}
-
-add_event_handler('get_admin_plugin_menu_links', 'dlimits_admin_menu');
-function dlimits_admin_menu($menu)
-{
-  global $page;
-
-  $name = 'Download Limits';
-
-  array_push(
-    $menu,
-    array(
-      'NAME' => $name,
-      'URL'  => get_root_url().'admin.php?page=plugin-prepaid_credits'
-      )
-    );
-
-  return $menu;
 }
 
 add_event_handler('loc_end_picture', 'dlimits_picture');
